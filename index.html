@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance Platform - Your Personalized Education Advisor</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CareerGuide</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-section="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#quiz" class="nav-link" data-section="quiz">Aptitude Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#courses" class="nav-link" data-section="courses">Course Explorer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#colleges" class="nav-link" data-section="colleges">College Directory</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#timeline" class="nav-link" data-section="timeline">Timeline</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Personalized Career & Education Advisor</h1>
+                    <p class="hero-description">
+                        Discover the perfect career path with AI-powered recommendations, 
+                        explore government colleges, and make informed decisions about your future.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="showSection('quiz')">
+                            <i class="fas fa-play"></i>
+                            Start Aptitude Quiz
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('courses')">
+                            <i class="fas fa-search"></i>
+                            Explore Courses
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Career Streams</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Government Colleges</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">AI</div>
+                        <div class="stat-label">Powered Matching</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2 class="section-title">How It Works</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Take Aptitude Quiz</h3>
+                        <p>Answer personalized questions to discover your interests, strengths, and ideal career paths.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Get AI Recommendations</h3>
+                        <p>Our intelligent system suggests the best streams, courses, and colleges based on your profile.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Find Government Colleges</h3>
+                        <p>Explore nearby government colleges with detailed information on courses, fees, and facilities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Career Path Mapping</h3>
+                        <p>Visualize your future with detailed career paths, job opportunities, and salary expectations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="container">
+                <div class="quiz-header">
+                    <h2 class="section-title">Aptitude & Interest Assessment</h2>
+                    <p class="section-description">
+                        Answer these questions honestly to get personalized career recommendations
+                    </p>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="progress-text">Question <span id="current-question">1</span> of <span id="total-questions">8</span></span>
+                    </div>
+
+                    <div class="quiz-content">
+                        <div class="question-card">
+                            <h3 class="question-text" id="question-text">Loading question...</h3>
+                            <div class="options-container" id="options-container">
+                                <!-- Options will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()" disabled>
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>
+                            Next
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-success" id="submit-btn" onclick="submitQuiz()" style="display: none;">
+                            <i class="fas fa-check"></i>
+                            Get Results
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="quiz-results" id="quiz-results" style="display: none;">
+                    <div class="results-header">
+                        <h3><i class="fas fa-trophy"></i> Your Personalized Recommendations</h3>
+                    </div>
+                    <div class="results-content">
+                        <!-- Results will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="section">
+            <div class="container">
+                <div class="courses-header">
+                    <h2 class="section-title">Course Explorer</h2>
+                    <p class="section-description">
+                        Explore different academic streams and career paths
+                    </p>
+                </div>
+
+                <div class="stream-tabs">
+                    <button class="stream-tab active" data-stream="science">
+                        <i class="fas fa-flask"></i>
+                        Science
+                    </button>
+                    <button class="stream-tab" data-stream="commerce">
+                        <i class="fas fa-chart-line"></i>
+                        Commerce
+                    </button>
+                    <button class="stream-tab" data-stream="arts">
+                        <i class="fas fa-palette"></i>
+                        Arts
+                    </button>
+                </div>
+
+                <div class="courses-content" id="courses-content">
+                    <!-- Courses will be loaded dynamically -->
+                </div>
+
+                <!-- Career Path Visualization -->
+                <div class="career-visualization" id="career-visualization" style="display: none;">
+                    <div class="career-header">
+                        <button class="btn btn-secondary" onclick="hideCareePath()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Courses
+                        </button>
+                        <h3 id="career-course-title">Career Path</h3>
+                    </div>
+                    <div class="career-content" id="career-content">
+                        <!-- Career visualization will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colleges Section -->
+        <section id="colleges" class="section">
+            <div class="container">
+                <div class="colleges-header">
+                    <h2 class="section-title">Government College Directory</h2>
+                    <p class="section-description">
+                        Find the best government colleges near you
+                    </p>
+                </div>
+
+                <div class="colleges-filters">
+                    <div class="filter-group">
+                        <label for="state-filter">State:</label>
+                        <select id="state-filter" onchange="filterColleges()">
+                            <option value="">All States</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="course-filter">Course:</label>
+                        <select id="course-filter" onchange="filterColleges()">
+                            <option value="">All Courses</option>
+                            <option value="btech">B.Tech</option>
+                            <option value="bsc">B.Sc</option>
+                            <option value="bcom">B.Com</option>
+                            <option value="ba">B.A</option>
+                            <option value="bba">BBA</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="loadColleges()">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+
+                <div class="colleges-grid" id="colleges-grid">
+                    <!-- Colleges will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <div class="timeline-header">
+                    <h2 class="section-title">Academic Timeline & Deadlines</h2>
+                    <p class="section-description">
+                        Stay updated with admission dates and scholarship deadlines
+                    </p>
+                </div>
+
+                <div class="timeline-content">
+                    <div class="timeline-tabs">
+                        <button class="timeline-tab active" data-timeline="admissions">
+                            <i class="fas fa-calendar-plus"></i>
+                            Admissions
+                        </button>
+                        <button class="timeline-tab" data-timeline="scholarships">
+                            <i class="fas fa-money-bill"></i>
+                            Scholarships
+                        </button>
+                    </div>
+
+                    <div class="timeline-grid" id="timeline-grid">
+                        <!-- Timeline items will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/colleges.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
